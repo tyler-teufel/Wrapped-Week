@@ -6,17 +6,18 @@
  * For more information, read
  * https://developer.spotify.com/web-api/authorization-guide/#client_credentials_flow
  */
-
+require('dotenv').config()
+console.log(process.env)
 var request = require('request'); // "Request" library
 
 var client_id = '79bedb443d674b4fad1d34658d8f394b'; // Your client id
-var client_secret = '888a19bc58a34ec9ad437da8c92a1ac7'; // Your secret
+var client_secret = process.env.API_KEY; // Your secret
 
 // your application requests authorization
 var authOptions = {
   url: 'https://accounts.spotify.com/api/token',
   headers: {
-    'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+    'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
   },
   form: {
     grant_type: 'client_credentials'
