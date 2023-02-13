@@ -10,7 +10,7 @@
 require('dotenv').config()
 //console.log(process.env)
 const helmet = require('helmet')
-app.use(helmet())
+
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var cors = require('cors');
@@ -42,7 +42,8 @@ var app = express();
 
 app.use(express.static(__dirname + '/public'))
    .use(cors())
-   .use(cookieParser());
+   .use(cookieParser())
+   .use(helmet());
 
 app.get('/login', function(req, res) {
 
