@@ -24,8 +24,8 @@ So far, the only elements contained in this repository are the authentication me
 The contained authentication methods contain authentication strategies referenced in the Spotify Developers' documentation, with examples compiled
 from two seperate repositories:
 
--[login Method Reference](https://github.com/JMPerez/passport-spotify)
--[Authorization Code, Client Credentials, Implicit Grant](https://github.com/spotify/web-api-examples)
+- [login Method Reference](https://github.com/JMPerez/passport-spotify)
+- [Authorization Code, Client Credentials, Implicit Grant](https://github.com/spotify/web-api-examples)
 
 Base of the code was used from these repositories, with several edits in order to suite a different sort of usage with protected credentials. 
 
