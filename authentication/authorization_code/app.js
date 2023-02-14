@@ -8,18 +8,21 @@
  */
 //var SpotifyWebApi = require('spotify-web-api-node');
 
-require('dotenv').config() //Loads in .env file with credentials
+ //Loads in .env file with credentials
 
-var helmet = require('helmet')
+var helmet = require('helmet');
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+var dotenv = require('dotenv').config();
+
 
 var client_id = process.env.API_ID; // Your client id
 var client_secret = process.env.API_KEY; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+console.log(process.env)
 
 /**
  * Generates a random string containing numbers and letters
@@ -42,8 +45,8 @@ var app = express();
 
 app.use(express.static(__dirname + '/public'))
    .use(cors())
-   .use(cookieParser())
-   .use(helmet());
+   .use(cookieParser());
+   
 
 app.get('/login', function(req, res) {
 
