@@ -1,8 +1,11 @@
+const { default: helmet } = require('helmet');
+
 var express = require('express'),
   session = require('express-session'),
   passport = require('passport'),
   SpotifyStrategy = require('passport-spotify').Strategy,
   consolidate = require('consolidate');
+
 
 require('dotenv').config();
 
@@ -65,6 +68,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static(__dirname + '/public'));
+app.use(helmet());
 
 app.engine('html', consolidate.nunjucks);
 
