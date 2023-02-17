@@ -4,7 +4,7 @@ var express = require('express'),
   session = require('express-session'),
   passport = require('passport'),
   SpotifyStrategy = require('passport-spotify').Strategy,
-  consolidate = require('consolidate');
+  consolidate = require('consolidate'); 
 
 
 require('dotenv').config();
