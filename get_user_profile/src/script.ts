@@ -10,6 +10,10 @@ if (!code) {
 } else {
     const profile = await fetchProfile(code);
     populateUI(profile);
+
+    const top_tracks = await fetchTracks(code);
+    populateTracks(top_tracks);
+    
 }
 
 async function redirectToAuthCodeFlow(clientId: string) {
@@ -30,6 +34,14 @@ async function fetchProfile(code: string): Promise<UserProfile> {
     return await result.json();
 }
 
+async function fetchTracks(code: string): Promise<TopTracks> {
+    const result = await fetch("https://api.spotify.com/v1/me/top/{tracks}", {
+        method: "GET", headers: { Authorization: `Bearer ${code}` } 
+    });
+    
+    return await result.json();
+}
+
 function populateUI(profile: UserProfile) {
     document.getElementById("displayName")!.innerText = profile.display_name;
     document.getElementById("avatar")!.setAttribute("src", profile.images[0].url)
@@ -40,6 +52,11 @@ function populateUI(profile: UserProfile) {
     document.getElementById("url")!.innerText = profile.href;
     document.getElementById("url")!.setAttribute("href", profile.href);
     document.getElementById("imgUrl")!.innerText = profile.images[0].url;
+}
+
+function populateTracks(top_tracks: TopTracks) {
+    document.getElementById("track_name")!.innerText = top_tracks.track_name;
+    document.getElementById("artist")!.innerText = top_tracks.artist;
 }
 
 export { };
