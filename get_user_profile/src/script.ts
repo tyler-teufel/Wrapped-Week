@@ -35,8 +35,10 @@ async function fetchProfile(code: string): Promise<UserProfile> {
 }
 
 async function fetchTracks(code: string): Promise<TopTracks> {
-    const result = await fetch("https://api.spotify.com/v1/me/top/{tracks}", {
+    const result = await fetch("https://api.spotify.com/v1/me/top/tracks", {
+        
         method: "GET", headers: { Authorization: `Bearer ${code}` } 
+
     });
     
     return await result.json();
@@ -45,6 +47,8 @@ async function fetchTracks(code: string): Promise<TopTracks> {
 function populateUI(profile: UserProfile) {
     document.getElementById("displayName")!.innerText = profile.display_name;
     document.getElementById("avatar")!.setAttribute("src", profile.images[0].url)
+    document.getElementById("followers")!.innerText = profile.followers.total.toString();
+    document.getElementById("country")!.innerText = profile.country;
     document.getElementById("id")!.innerText = profile.id;
     document.getElementById("email")!.innerText = profile.email;
     document.getElementById("uri")!.innerText = profile.uri;
