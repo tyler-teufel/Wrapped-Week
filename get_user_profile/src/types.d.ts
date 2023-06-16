@@ -21,3 +21,9 @@ interface Image {
     height: number;
     width: number;
 }
+
+interface TopTracks {
+    track_name: string;
+    artist: string;
+    album: string;
+}
