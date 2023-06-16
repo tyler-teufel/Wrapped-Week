@@ -1,3 +1,4 @@
+
 interface UserProfile {
     country: string;
     display_name: string;
@@ -27,3 +28,14 @@ interface TopTracks {
     artist: string;
     album: string;
 }
+
+namespace NodeJS {
+
+    interface ProcessEnv {
+        API_ID: string;
+            
+    }
+}
+
+
+

@@ -1,12 +1,19 @@
 // Because this is a literal single page application
 // we detect a callback from Spotify by checking for the hash fragment
+import * as dotenv from 'dotenv';
 
-const clientId = "79bedb443d674b4fad1d34658d8f394b";  // Replace with your client id
+ // Replace with your client id
 const params = new URLSearchParams(window.location.hash.substring(1));
 const code = params.get("access_token");
+dotenv.config();
+const clientId = process.env.API_ID;
+
+
 
 if (!code) {
+
     redirectToAuthCodeFlow(clientId);
+
 } else {
     const profile = await fetchProfile(code);
     populateUI(profile);
